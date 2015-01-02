@@ -1,2 +1,3 @@
 node_modules
 test/stress/output
+test/npm-debug.log
