@@ -1,0 +1,26 @@
+{
+  "name": "to-selector",
+  "version": "0.0.1",
+  "description": "DOMElement to css path converter",
+  "keywords": [
+    "selector",
+    "css",
+    "path",
+    "converter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robi50/to-selector"
+  },
+  "devDependencies": {
+		"jsdom": "^2.0.0"
+  },
+  "scripts": {
+		"test": "mocha test/test.js"
+  },
+  "main": "./lib/to_selector.js",
+  "files": [
+    "lib/"
+  ],
+  "readme": "Error. Readme not found"
+}

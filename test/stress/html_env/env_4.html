@@ -1,0 +1,601 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body class="flat_page profile_page">
+
+<!-- header bar, contains info browsing user if logged in -->
+
+	<div id="global_header">
+		<div class="content">
+
+			<div class="logo">
+				<span id="logo_holder">
+					<a href="http://store.steampowered.com/">
+						<img src="http://steamcommunity-a.akamaihd.net/public/images/header/globalheader_logo.png" width="176" height="44" border="0" alt="Steam Logo">
+					</a>
+				</span>
+				<!--[if lt IE 7]>
+				<style type="text/css">
+				#logo_holder img { filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); }
+				#logo_holder { display: inline-block; width: 176px; height: 44px; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://steamcommunity-a.akamaihd.net/public/images/header/globalheader_logo.png'); }
+				</style>
+				<![endif]-->
+			</div>
+
+			<div style="position: absolute; left: 200px;" id="supernav">
+	<a class="menuitem supernav" href="http://store.steampowered.com/" data-tooltip-content="
+		<a class=&quot;submenuitem&quot; href=&quot;http://store.steampowered.com/&quot;>Featured</a>
+		<a class=&quot;submenuitem&quot; href=&quot;http://store.steampowered.com/explore/&quot;>Explore</a>
+		<a class=&quot;submenuitem&quot; href=&quot;http://store.steampowered.com/curators/&quot;>Curators</a>
+		<a class=&quot;submenuitem&quot; href=&quot;http://steamcommunity.com/my/wishlist/&quot;>Wishlist</a>
+		<a class=&quot;submenuitem&quot; href=&quot;http://store.steampowered.com/news/&quot;>News</a>
+		<a class=&quot;submenuitem&quot; href=&quot;http://store.steampowered.com/stats/&quot;>STATS</a>
+	">
+		STORE	</a>
+
+
+	<a class="menuitem supernav" style="display: block" href="http://steamcommunity.com/" data-tooltip-content="
+					<a class=&quot;submenuitem&quot; href=&quot;http://steamcommunity.com/&quot;>Home</a>
+					<a class=&quot;submenuitem&quot; href=&quot;http://steamcommunity.com/discussions/&quot;>DISCUSSIONS</a>
+					<a class=&quot;submenuitem&quot; href=&quot;http://steamcommunity.com/workshop/&quot;>Workshop</a>
+					<a class=&quot;submenuitem&quot; href=&quot;http://steamcommunity.com/greenlight/&quot;>Greenlight</a>
+					<a class=&quot;submenuitem&quot; href=&quot;http://steamcommunity.com/market/&quot;>Market</a>
+													">
+
+		Community	</a>
+
+	
+
+	
+	<a class="menuitem" href="http://store.steampowered.com/about/">
+		ABOUT	</a>
+
+	<a class="menuitem" href="http://support.steampowered.com/">
+		SUPPORT	</a>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function($) { 
+		$('.tooltip').v_tooltip();
+		$('.supernav').v_tooltip({'location':'bottom', 'tooltipClass': 'supernav_content', 'offsetY':-4, 'offsetX': 1, 'horizontalSnap': 4, 'tooltipParent': '#supernav', 'correctForScreenSize': false});
+	});
+</script>
+			<div id="global_actions">
+								<div id="global_action_menu">
+
+					<div class="header_installsteam_btn header_installsteam_btn_green">
+						<div class="header_installsteam_btn_leftcap"></div>
+						<div class="header_installsteam_btn_rightcap"></div>
+						<a class="header_installsteam_btn_content" href="http://store.steampowered.com/about/">
+							Install Steam						</a>
+					</div>
+																		<a class="global_action_link" href="https://steamcommunity.com/login/home/?goto=id%2Frobi50">Login</a>
+							&nbsp;|&nbsp;
+												<span class="pulldown global_action_link" id="language_pulldown" onclick="ShowMenu( this, 'language_dropdown', 'right' );">Language</span>
+						<div class="popup_block" id="language_dropdown" style="display: none;">
+							<div class="shadow_ul"></div><div class="shadow_top"></div><div class="shadow_ur"></div><div class="shadow_left"></div><div class="shadow_right"></div><div class="shadow_bl"></div><div class="shadow_bottom"></div><div class="shadow_br"></div>							<div class="popup_body popup_menu shadow_content">
+																									<a class="popup_menu_item tight" href="?l=bulgarian">Български (Bulgarian)</a>
+																									<a class="popup_menu_item tight" href="?l=czech">čeština (Czech)</a>
+																									<a class="popup_menu_item tight" href="?l=danish">Dansk (Danish)</a>
+																									<a class="popup_menu_item tight" href="?l=dutch">Nederlands (Dutch)</a>
+																																		<a class="popup_menu_item tight" href="?l=finnish">Suomi (Finnish)</a>
+																									<a class="popup_menu_item tight" href="?l=french">Français (French)</a>
+																									<a class="popup_menu_item tight" href="?l=german">Deutsch (German)</a>
+																									<a class="popup_menu_item tight" href="?l=greek">Ελληνικά (Greek)</a>
+																									<a class="popup_menu_item tight" href="?l=hungarian">Magyar (Hungarian)</a>
+																									<a class="popup_menu_item tight" href="?l=italian">Italiano (Italian)</a>
+																									<a class="popup_menu_item tight" href="?l=japanese">日本語 (Japanese)</a>
+																									<a class="popup_menu_item tight" href="?l=koreana">한국어 (Korean)</a>
+																									<a class="popup_menu_item tight" href="?l=norwegian">Norsk (Norwegian)</a>
+																									<a class="popup_menu_item tight" href="?l=polish">Polski (Polish)</a>
+																									<a class="popup_menu_item tight" href="?l=portuguese">Português (Portuguese)</a>
+																									<a class="popup_menu_item tight" href="?l=brazilian">Português-Brasil (Portuguese-Brazil)</a>
+																									<a class="popup_menu_item tight" href="?l=romanian">Română (Romanian)</a>
+																									<a class="popup_menu_item tight" href="?l=russian">Русский (Russian)</a>
+																									<a class="popup_menu_item tight" href="?l=schinese">简体中文 (Simplified Chinese)</a>
+																									<a class="popup_menu_item tight" href="?l=spanish">Español (Spanish)</a>
+																									<a class="popup_menu_item tight" href="?l=swedish">Svenska (Swedish)</a>
+																									<a class="popup_menu_item tight" href="?l=tchinese">繁體中文 (Traditional Chinese)</a>
+																									<a class="popup_menu_item tight" href="?l=thai">ไทย (Thai)</a>
+																									<a class="popup_menu_item tight" href="?l=turkish">Türkçe (Turkish)</a>
+																									<a class="popup_menu_item tight" href="?l=ukrainian">Українська (Ukrainian)</a>
+																<a class="popup_menu_item tight" href="http://translation.steampowered.com" target="_blank">Help us translate Steam</a>
+							</div>
+						</div>
+									</div>
+			</div>
+			
+			
+			
+		</div>
+
+	</div>
+
+
+<div id="modalBG" style="display: none"></div><script type="text/javascript">
+	g_sessionID = "OTU0NzEzNDc4";
+	g_steamID = false;
+	$J( InitMiniprofileHovers );
+	$J( InitEmoticonHovers );
+
+	$J( function() {
+		window.BindCommunityTooltip = function( $Selector ) { $Selector.v_tooltip( {'tooltipClass': 'community_tooltip', 'dataName': 'communityTooltip' } ); };
+		BindCommunityTooltip( $J('[data-community-tooltip]') );
+	})
+
+	$J( function() { InitEconomyHovers( "http:\/\/steamcommunity-a.akamaihd.net\/public\/css\/skin_1\/economy.css?v=F7R9QOn5TrCw", "http:\/\/steamcommunity-a.akamaihd.net\/public\/javascript\/economy_common.js?v=1LohOdoSLPYI&l=english", "http:\/\/steamcommunity-a.akamaihd.net\/public\/javascript\/economy.js?v=rqRlUrswDjmx&l=english" );});</script><!-- /header bar -->
+<div class="no_header profile_page has_profile_background " style="background-image: url( 'http://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/96100/0d5545aa593484e272ead90ba14aab9095304092.jpg' );">
+
+	<div class="profile_header_bg">
+
+
+	<div class="profile_header_bg_texture">
+		
+		<div class="profile_header">
+
+			<div class="profile_header_content">
+
+				<div class="playerAvatar profile_header_size offline">
+					<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/ba/baa860034144fb2ed1e66cd6a8aad39bf52bd572_full.jpg">
+				</div>
+				<div class="profile_header_badgeinfo">
+											<a href="http://steamcommunity.com/id/robi50/badges">
+							<div class="persona_name persona_level">Level <div class="friendPlayerLevel lvl_10"><span class="friendPlayerLevelNum">12</span></div></div>
+						</a>
+																<div class="profile_header_actions">
+											</div>
+				</div>
+
+				<div class="profile_header_summary">
+										<div class="persona_name" style="font-size: 24px;">
+						<span class="actual_persona_name">robi50</span>
+												<span class="namehistory_link" onclick="ShowAliasPopup( this );">
+							<img id="getnamehistory_arrow" src="http://steamcommunity-a.akamaihd.net/public/images/skin_1/arrowDn9x5.gif" width="9" height="5" border="0">
+						</span>
+						<div id="NamePopup" class="popup_block_new" style="display: none;">
+							<div class="popup_body popup_menu">
+								<div>This user has also played as:</div>
+								<div id="NamePopupAliases">
+
+								</div>
+							</div>
+						</div>
+					</div>
+											<div class="header_real_name ellipsis">
+							Robin															&nbsp;
+																						<img class="profile_flag" src="http://steamcommunity-a.akamaihd.net/public/images/countryflags/tr.gif">
+														Turkey						</div>
+						<div class="profile_summary" style="height: 76px;">
+							rob rob robi						</div>
+						<div class="profile_summary_footer" style="display: none;">
+							<span class="whiteLink">View more info</span>
+						</div>
+						<script type="text/javascript"> $J( function() { InitProfileSummary( g_rgProfileData['summary'] ); } ); </script>
+									</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="profile_content has_profile_background">
+		
+			<div class="profile_background_holder_content">
+				<div class="profile_background_overlay_content"></div>
+				<div class="profile_background_image_content " style="background-image: url(http://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/96100/0d5545aa593484e272ead90ba14aab9095304092.jpg);">
+				</div>
+			</div>
+				<div class="profile_content_inner">
+						<div class="profile_leftcol">
+									<div class="profile_customization_area">
+						
+<div class="profile_customization">
+		<div class="profile_customization_header">Screenshot Showcase</div>
+
+	<div class="profile_customization_block">
+		<div class="screenshot_showcase">
+						<div class="screenshot_showcase_primary showcase_slot ">
+									<div class="screenshot_showcase_screenshot" onclick="ShowModalContent( 'http://steamcommunity.com/sharedfiles/filedetails/?id=281264659&amp;insideModal=1', 'http://steamcommunity.com/sharedfiles/filedetails/?id=281264659', 'http://steamcommunity.com/sharedfiles/filedetails/?id=281264659', true );">
+						<img width="506" height="284" src="http://cloud-4.steampowered.com/ugc/41972545133966381/9731708269511727B404AF1AEE9D88B77889C071/506x284.resizedimage">
+					</div>
+					<div class="screenshot_showcase_itemname">
+						The Elder Scrolls V: Skyrim					</div>
+					<div class="screenshot_showcase_stats">
+																							</div>
+											</div>
+			<div class="screenshot_showcase_rightcol">
+									<div style="height: 58px;" class="screenshot_showcase_smallscreenshot showcase_slot ">
+													<div class="screenshot_showcase_screenshot" onclick="ShowModalContent( 'http://steamcommunity.com/sharedfiles/filedetails/?id=278915597&amp;insideModal=1', 'http://steamcommunity.com/sharedfiles/filedetails/?id=278915597', 'http://steamcommunity.com/sharedfiles/filedetails/?id=278915597', true );">
+								<img width="100" height="56" src="http://cloud-4.steampowered.com/ugc/486701738990113120/EAE4FF6C1E3F812F01ECB3411CA36B009041430E/100x56.resizedimage">
+							</div>
+																	</div>
+									<div style="height: 58px;" class="screenshot_showcase_smallscreenshot showcase_slot ">
+													<div class="screenshot_showcase_screenshot" onclick="ShowModalContent( 'http://steamcommunity.com/sharedfiles/filedetails/?id=278891268&amp;insideModal=1', 'http://steamcommunity.com/sharedfiles/filedetails/?id=278891268', 'http://steamcommunity.com/sharedfiles/filedetails/?id=278891268', true );">
+								<img width="100" height="56" src="http://cloud-4.steampowered.com/ugc/486701738988730642/81C76A9E538A54F228F2479F16894A5ED17D11B6/100x56.resizedimage">
+							</div>
+																	</div>
+									<div style="height: 58px;" class="screenshot_showcase_smallscreenshot showcase_slot ">
+													<div class="screenshot_showcase_screenshot" onclick="ShowModalContent( 'http://steamcommunity.com/sharedfiles/filedetails/?id=278713205&amp;insideModal=1', 'http://steamcommunity.com/sharedfiles/filedetails/?id=278713205', 'http://steamcommunity.com/sharedfiles/filedetails/?id=278713205', true );">
+								<img width="100" height="56" src="http://cloud-4.steampowered.com/ugc/486701738977705068/3CB11D0C6DA6BC1D7FD1DDF3F86727DAB06805B7/100x56.resizedimage">
+							</div>
+																	</div>
+													<a class="screenshot_showcase_smallscreenshot screenshot_count" href="http://steamcommunity.com/id/robi50/screenshots/">
+						<div class="screenshot_showcase_screenshot">
+							+ 597						</div>
+					</a>
+							</div>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</div>											</div>
+								<div class="profile_recentgame_header profile_leftcol_header">
+										<h2>Recent Game Activity</h2>
+				</div>
+
+								<div class="recent_games">
+											<div class="recent_game">
+							<div class="recent_game_content">
+								<div class="game_info">
+									<div class="game_info_cap"><a href="http://steamcommunity.com/app/730"><img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/d0595ff02f5c79fd19b06f4d6165c3fda2372820.jpg"></a></div>
+									<div class="game_info_details">
+										143 hrs on record<br>
+																																	last played on 9 Dec, 2014																														</div>
+									<div class="game_name"><a class="whiteLink" href="http://steamcommunity.com/app/730">Counter-Strike: Global Offensive</a></div>
+								</div>
+
+									<div class="game_info_stats">
+					<div class="game_info_achievements_badge">
+									<div class="game_info_achievements">
+						<span class="game_info_achievement_summary">
+							<a class="whiteLink" href="http://steamcommunity.com/id/robi50/stats/730/achievements/">Achievement Progress</a>
+							&nbsp; 80 of 167						</span>
+						<div class="achievement_progress_bar_ctn">
+															<div class="progress_bar" style="width: 47%;">
+
+								</div>
+													</div>
+						<div class="achievement_icons">
+																						<div class="game_info_achievement" data-community-tooltip="Defusus Interruptus">
+									<a href="http://steamcommunity.com/id/robi50/stats/730/achievements/">
+										<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/71d7972286f4037b04343cf14a429e9bb890980c.jpg">
+									</a>
+								</div>
+															<div class="game_info_achievement" data-community-tooltip="Friendly Firearms">
+									<a href="http://steamcommunity.com/id/robi50/stats/730/achievements/">
+										<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/83325a3c5d679bd363102cd9abd3c9cac649497c.jpg">
+									</a>
+								</div>
+															<div class="game_info_achievement" data-community-tooltip="Galil AR Expert">
+									<a href="http://steamcommunity.com/id/robi50/stats/730/achievements/">
+										<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/a3a32715a970dd3a8c174bc57ee1b2204d9d29b1.jpg">
+									</a>
+								</div>
+															<div class="game_info_achievement" data-community-tooltip="One Shot One Kill">
+									<a href="http://steamcommunity.com/id/robi50/stats/730/achievements/">
+										<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/7ceebbc7a90958c4c50477d313f55f7c371cefa9.jpg">
+									</a>
+								</div>
+															<div class="game_info_achievement" data-community-tooltip="Five-SeveN Expert">
+									<a href="http://steamcommunity.com/id/robi50/stats/730/achievements/">
+										<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/730/05ce551a5f4e8c2395ed4c20ce80e6b380f201de.jpg">
+									</a>
+								</div>
+																						<div class="game_info_achievement plus_more" onclick="window.location='http://steamcommunity.com/id/robi50/stats/730/achievements/'">
+									+75								</div>
+													</div>
+					</div>
+													<!-- only badge, no achievements -->
+					<div class="game_info_badge_border">
+						<div class="game_info_badge">
+							<div class="game_info_badge_icon">
+								<a href="http://steamcommunity.com/id/robi50/gamecards/730">
+									<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/730/400f2cdf69db174f5616038edbb7a3f8e917ae00.png">
+								</a>
+							</div>
+							<div class="game_info_badge_description">
+								<div class="name"><a class="whiteLink" href="http://steamcommunity.com/id/robi50/gamecards/730">Global Sentinel</a></div>
+								<div class="xp">500 XP</div>
+							</div>
+						</div>
+					</div>
+								<div style="clear: right;"></div>
+			</div>
+											<div class="game_info_stats_rule"></div>
+						<div class="game_info_stats_publishedfilecounts">
+						<span class="published_file_count_ctn">
+			<span class="published_file_icon recommendation"></span>
+			<a class="published_file_link" href="http://steamcommunity.com/id/robi50/recommended/730/">Review 1</a>
+		</span>
+					</div>
+			</div>
+							</div>
+						</div>
+											<div class="recent_game">
+							<div class="recent_game_content">
+								<div class="game_info">
+									<div class="game_info_cap"><a href="http://steamcommunity.com/app/219740"><img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/219740/46cbbc2fcb14eb0bbbbaebbdf0b1e0eaf6f4c646.jpg"></a></div>
+									<div class="game_info_details">
+										131 hrs on record<br>
+																																	last played on 10 Nov, 2014																														</div>
+									<div class="game_name"><a class="whiteLink" href="http://steamcommunity.com/app/219740">Don't Starve</a></div>
+								</div>
+
+									<div class="game_info_stats">
+										<div class="game_info_stats_publishedfilecounts">
+						<span class="published_file_count_ctn">
+			<span class="published_file_icon screenshot"></span>
+			<a class="published_file_link" href="http://steamcommunity.com/id/robi50/screenshots/?appid=219740">Screenshots 259</a>
+		</span>
+				<span class="published_file_count_ctn">
+			<span class="published_file_icon recommendation"></span>
+			<a class="published_file_link" href="http://steamcommunity.com/id/robi50/recommended/219740/">Review 1</a>
+		</span>
+					</div>
+			</div>
+							</div>
+						</div>
+											<div class="recent_game">
+							<div class="recent_game_content">
+								<div class="game_info">
+									<div class="game_info_cap"><a href="http://steamcommunity.com/app/102500"><img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/102500/6d4f2d6a95423ee4b43d217d1e089fd9112f7ae7.jpg"></a></div>
+									<div class="game_info_details">
+										1.7 hrs on record<br>
+																																	last played on 2 Nov, 2014																														</div>
+									<div class="game_name"><a class="whiteLink" href="http://steamcommunity.com/app/102500">Kingdoms of Amalur: Reckoning™</a></div>
+								</div>
+
+									<div class="game_info_stats">
+					<div class="game_info_achievements_only_ctn">
+									<div class="game_info_achievements">
+						<span class="game_info_achievement_summary">
+							<a class="whiteLink" href="http://steamcommunity.com/id/robi50/stats/102500/achievements/">Achievement Progress</a>
+							&nbsp; 1 of 61						</span>
+						<div class="achievement_progress_bar_ctn">
+															<div class="progress_bar" style="width: 1%;">
+
+								</div>
+													</div>
+						<div class="achievement_icons">
+																						<div class="game_info_achievement" data-community-tooltip="Reborn">
+									<a href="http://steamcommunity.com/id/robi50/stats/102500/achievements/">
+										<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/apps/102500/6883ecfae27ed7012d0bc5abe485dc4d46c42e52.jpg">
+									</a>
+								</div>
+																				</div>
+					</div>
+												<div style="clear: right;"></div>
+			</div>
+					</div>
+							</div>
+						</div>
+									</div>
+				<div>
+					<div class="recentgame_quicklinks">
+						View:						<a class="whiteLink" href="http://steamcommunity.com/id/robi50/games/">All 17 Games</a>
+																			| <a class="whiteLink" href="http://steamcommunity.com/id/robi50/recommended/">Reviews</a>
+											</div>
+					<div style="clear: right;"></div>
+				</div>
+				
+				<div class="profile_comment_area">
+									</div>
+			</div>
+
+			
+			<div class="profile_rightcol">
+									<div class="profile_in_game persona offline">
+						<div class="profile_in_game_header">Currently Offline</div>
+													<div class="profile_in_game_name">Last Online: 24 days ago</div>
+											</div>
+								
+				<div class="profile_badges">
+													<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/badges/">
+						<span class="count_link_label">Badges</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																10															</span>
+					</a>
+				</div>
+																									<div class="profile_badges_badge " data-community-tooltip="Pillar of Community<br>
+Complete 22 of 0 Steam Community tasks to earn the Level 2 badge.">
+							<a href="http://steamcommunity.com/id/robi50/badges/2">
+								<img src="http://steamcommunity-a.akamaihd.net/public/images/badges/01_community/community02_54.png">
+							</a>
+						</div>
+																	<div class="profile_badges_badge " data-community-tooltip="Years of Service<br>
+Member since 29 December, 2012.">
+							<a href="http://steamcommunity.com/id/robi50/badges/1">
+								<img src="http://steamcommunity-a.akamaihd.net/public/images/badges/02_years/steamyears202_54.png">
+							</a>
+						</div>
+																	<div class="profile_badges_badge " data-community-tooltip="Leftover<br>
+Level 1 Deadlight Badge">
+							<a href="http://steamcommunity.com/id/robi50/gamecards/211400">
+								<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/211400/5b2ee67192fb17a10f611158b8341c298b035a36.png">
+							</a>
+						</div>
+																	<div class="profile_badges_badge last" data-community-tooltip="Steam Summer Adventure 2014 - Green Team<br>
+Scored 18 points for the Green Team during the Steam Summer Adventure 2014.">
+							<a href="http://steamcommunity.com/id/robi50/badges/19">
+								<img src="http://steamcommunity-a.akamaihd.net/public/images/badges/16_summer2014/team_green.png">
+							</a>
+						</div>
+											<div style="clear: left;"></div>
+				</div>
+
+				<div class="profile_item_links">
+													<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/games/">
+						<span class="count_link_label">Games</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																17															</span>
+					</a>
+				</div>
+																						<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/screenshots/">
+						<span class="count_link_label">Screenshots</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																601															</span>
+					</a>
+				</div>
+																																																<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/recommended/">
+						<span class="count_link_label">Reviews</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																7															</span>
+					</a>
+				</div>
+																																																													<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/inventory/">
+						<span class="count_link_label">Inventory</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																&nbsp; <!-- so the line spaces like the rest -->
+															</span>
+					</a>
+				</div>
+													</div>
+
+								<div class="profile_group_links">
+													<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/groups/">
+						<span class="count_link_label">Groups</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																4															</span>
+					</a>
+				</div>
+																								<div class="profile_group profile_primary_group">
+						<div class="profile_group_avatar">
+							<a href="http://steamcommunity.com/groups/tradingcards">
+								<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/2c/2ce81e0b8f1c748f86d1ca4230a7f45dd0b906b1_medium.jpg">
+							</a>
+						</div>
+						<a class="whiteLink" href="http://steamcommunity.com/groups/tradingcards">
+							Steam Trading Cards Group						</a>
+						<br>1,320,186 Members						<div style="clear: left;"></div>
+					</div>
+																					<div class="profile_group">
+							<div class="profile_group_avatar">
+								<a href="http://steamcommunity.com/groups/love-eminem">
+									<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/22/22f22af76c489ee8b9851c240c756d4055b1cc4f.jpg">
+								</a>
+							</div>
+							<a class="whiteLink" href="http://steamcommunity.com/groups/love-eminem">
+								I LOVE EMINEM							</a>
+							<br>320 Members							<div style="clear: left;"></div>
+						</div>
+												<div class="profile_group">
+							<div class="profile_group_avatar">
+								<a href="http://steamcommunity.com/groups/Theprogrammingclan">
+									<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/08/088c987bae747291bec80df04bf7aeef2c26d9e4.jpg">
+								</a>
+							</div>
+							<a class="whiteLink" href="http://steamcommunity.com/groups/Theprogrammingclan">
+								The Programmers							</a>
+							<br>36 Members							<div style="clear: left;"></div>
+						</div>
+															</div>
+				
+								<div class="profile_friend_links">
+													<div class="profile_count_link">
+					<a href="http://steamcommunity.com/id/robi50/friends/">
+						<span class="count_link_label">Friends</span>&nbsp;
+							<span class="profile_count_link_total">
+
+																4															</span>
+					</a>
+				</div>
+									
+					
+					<div class="profile_topfriends">
+															<div class="friendBlock persona offline" data-miniprofile="91626232">
+			<a class="friendBlockLinkOverlay" href="http://steamcommunity.com/id/HiLa_"></a>
+							<div class="friendPlayerLevel lvl_10">
+					<span class="friendPlayerLevelNum">11</span>
+				</div>
+												<div class="playerAvatar offline">
+				<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/89/89479712e6dd8bcb479cdc1dc9a399bef3e7701e.jpg">
+			</div>
+			<div class="friendBlockContent">
+				HiLa_<br>
+				<span class="friendSmallText">
+		Last Online: 8 days ago
+				</span>
+			</div>
+		</div>
+																	<div class="friendBlock persona offline" data-miniprofile="144305302">
+			<a class="friendBlockLinkOverlay" href="http://steamcommunity.com/profiles/76561198104571030"></a>
+							<div class="friendPlayerLevel lvl_0">
+					<span class="friendPlayerLevelNum">5</span>
+				</div>
+												<div class="playerAvatar offline">
+				<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/91/91d3bda0dab83375f65657f73adb7dabc5ae16d7.jpg">
+			</div>
+			<div class="friendBlockContent">
+				Polarbear*白熊<br>
+				<span class="friendSmallText">
+		Last Online: 2 hrs, 42 mins ago
+				</span>
+			</div>
+		</div>
+																	<div class="friendBlock persona offline" data-miniprofile="70238091">
+			<a class="friendBlockLinkOverlay" href="http://steamcommunity.com/profiles/76561198030503819"></a>
+							<div class="friendPlayerLevel lvl_0">
+					<span class="friendPlayerLevelNum">3</span>
+				</div>
+												<div class="playerAvatar offline">
+				<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/d9/d9d0e59b0c07926ef69d6904b5e6025024c63368.jpg">
+			</div>
+			<div class="friendBlockContent">
+				Make_it_Or_Break_it<br>
+				<span class="friendSmallText">
+		Last Online: 36 days ago
+				</span>
+			</div>
+		</div>
+																	<div class="friendBlock persona offline" data-miniprofile="157190156">
+			<a class="friendBlockLinkOverlay" href="http://steamcommunity.com/profiles/76561198117455884"></a>
+							<div class="friendPlayerLevel lvl_0">
+					<span class="friendPlayerLevelNum">1</span>
+				</div>
+												<div class="playerAvatar offline">
+				<img src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/cc/cca209a52e47caff923c35e1a55034be27af7312.jpg">
+			</div>
+			<div class="friendBlockContent">
+				lölböbl<br>
+				<span class="friendSmallText">
+		Last Online: 15 hrs, 42 mins ago
+				</span>
+			</div>
+		</div>
+													</div>
+				</div>
+				
+			</div>
+
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+
+</div>
+
+	<div id="footer_spacer"></div>
+	<div id="footer">
+		<div class="footer_content">
+			<span id="footerLogo"><img src="http://steamcommunity-a.akamaihd.net/public/images/skin_1/footerLogo_valve.png" width="96" height="26" border="0" alt="Valve Logo"></span>
+			<span id="footerText">
+				© Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.<br>Some geospatial data on this website is provided by <a target="_blank" href="https://steamcommunity.com/linkfilter/?url=http://www.geonames.org">geonames.org</a>.				<br>
+									<span class="valve_links">
+						<a href="http://store.steampowered.com/privacy_agreement/" target="_blank">Privacy Policy</a> | <a href="http://www.valvesoftware.com/legal.htm" target="_blank">Legal</a> | <a href="http://store.steampowered.com/subscriber_agreement/" target="_blank">Steam Subscriber Agreement</a>
+					</span>
+											
+							</span>
+		</div>
+	</div>
+	
+<div class="miniprofile_hover" style="display: none;"><div class="shadow_ul"></div><div class="shadow_top"></div><div class="shadow_ur"></div><div class="shadow_left"></div><div class="shadow_right"></div><div class="shadow_bl"></div><div class="shadow_bottom"></div><div class="shadow_br"></div><div class="miniprofile_hover_inner shadow_content"></div><div class="hover_arrow left miniprofile_arrow"><div class="miniprofile_arrow_inner"></div></div><div class="hover_arrow right miniprofile_arrow"><div class="miniprofile_arrow_inner"></div></div></div></body>
+</html>
