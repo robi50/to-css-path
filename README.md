@@ -1,30 +1,30 @@
-to-selector (Experimental)
+to-css-path (Experimental)
 ===========
 
 DOMElement to css path converter
 
 Almost every time it will give you a valid and unique css path of target DOMElement. But it will be not speed optimized, cross browser nor small.
 
-### `target.toSelector()`
+### `target.toCssPath()`
 Consumes css path from target DOMElement
-### `toSelector.install(target, document)`
-Injects the 'toSelector' method to target object.
-### `toSelector.uninstall(target)`
-Removes the 'toSelector' method from target object.
+### `toCssPath.install(target, document)`
+Injects the 'toCssPath' method to target object.
+### `toCssPath.uninstall(target)`
+Removes the 'toCssPath' method from target object.
 
 Example:
 ```javascript
 var jsdom = require("jsdom").jsdom;
-var toSelector = require("to-selector");
+var toCssPath = require("to-css-path");
 
 // in this example we are using the 'jsdom' library to access the dom 
-// 'toSelector' will work everywhere that has window, window.document
+// 'toCssPath' will work everywhere that has window, window.document
 var doc = jsdom("<html><head></head><body></body></html>"),
 		window = doc.parentWindow,
 		document = window.document;
 
-// lets inject the 'toSelector' method to 'HTMLElement' so we can access from every dom element
-toSelector.install(window.HTMLElement, window.document, false);
+// lets inject the 'toCssPath' method to 'HTMLElement' so we can access from every dom element
+toCssPath.install(window.HTMLElement, window.document, false);
 
 // lets fill our body with element so we can get little bit more complex css paths
 window.document.body.appendChild(window.document.createElement("div"));
@@ -36,7 +36,7 @@ fancyDiv.id = "fancy-div";
 // element must be children of document.body
 window.document.body.appendChild(fancyDiv);
 
-var cssPath = fancyDiv.toSelector();
+var cssPath = fancyDiv.toCssPath();
 console.log(cssPath);
 ```
 ```

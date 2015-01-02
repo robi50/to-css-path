@@ -1,9 +1,8 @@
 {
-  "name": "to-selector",
+  "name": "to-css-path",
   "version": "0.0.1",
   "description": "DOMElement to css path converter",
   "keywords": [
-    "selector",
     "css",
     "path",
     "converter"
@@ -18,7 +17,7 @@
   "scripts": {
 		"test": "mocha test/test.js"
   },
-  "main": "./lib/to_selector.js",
+  "main": "./lib/to_css_path.js",
   "files": [
     "lib/"
   ],

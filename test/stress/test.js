@@ -3,7 +3,7 @@ var jsdom = require("jsdom").jsdom;
 var fs = require("fs");
 var assert = require("assert");
 
-var toSelector = require("../../lib/to_selector.js");
+var toCssPath = require("../../lib/to_css_path.js");
 var toJSON = require("../../lib/util/to_json.js");
 
 // PS: Always compress the env files. It helps to save huge time
@@ -18,10 +18,10 @@ var doc = jsdom(fs.readFileSync(htmlEnvFilePath)),
 		window = doc.parentWindow,
 		document = window.document;
 
-toSelector.install(window.HTMLElement, document, true);
+toCssPath.install(window.HTMLElement, document, true);
 toJSON.install(window.HTMLElement);
 
-describe("toSelector", function(){
+describe("toCssPath", function(){
 	// stress tests could take to much time
 	this.timeout(10000000);
 
@@ -33,14 +33,14 @@ describe("toSelector", function(){
 		for(var i = 0; i < elements.length; i++){
 			var el = elements[i];
 
-			var selector = el.toSelector();
-			if(selector){
-				assert.deepEqual(document.querySelector(selector), el);
+			var path = el.toCssPath();
+			if(path){
+				assert.deepEqual(document.querySelector(path), el);
 				assertCount++;
 			}else{
 				// console.log(el.toJSON());
 				// console.log("");
-				// console.log(selector);
+				// console.log(path);
 				// console.log("");	
 				passCount++;
 			}
