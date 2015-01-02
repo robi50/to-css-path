@@ -1,3 +1,4 @@
 node_modules
 test/stress/output
 test/npm-debug.log
+test/stress/html_env
