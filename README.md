@@ -3,6 +3,13 @@ to-selector (Experimental)
 
 DOMElement to css path converter
 
+### `target.toSelector()`
+Consumes css path from target DOMElement
+### `toSelector.install(target, document, debugMode)`
+Injects the 'toSelector' method to target object.
+### `toSelector.uninstall(target)`
+Removes the 'toSelector' method from target object.
+
 Example:
 ```javascript
 var jsdom = require("jsdom").jsdom;
