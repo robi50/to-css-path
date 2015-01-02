@@ -3,9 +3,11 @@ to-selector (Experimental)
 
 DOMElement to css path converter
 
+Almost every time it will give you a valid and unique css path of target DOMElement. But it will be not speed optimized, cross browser nor small.
+
 ### `target.toSelector()`
 Consumes css path from target DOMElement
-### `toSelector.install(target, document, debugMode)`
+### `toSelector.install(target, document)`
 Injects the 'toSelector' method to target object.
 ### `toSelector.uninstall(target)`
 Removes the 'toSelector' method from target object.
