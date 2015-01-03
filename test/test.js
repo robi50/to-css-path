@@ -25,37 +25,37 @@ describe("Selectors", function(){
 
 	describe("All of them", function(){
 		it("should initalize with correct type and value", function(){
-			var idS = new IdSelector("a");
-			assert.deepEqual(Selector.TYPE_ID, idS.type);
-			assert.deepEqual(idS.value, "a");
+			var s1 = new IdSelector("a");
+			assert.deepEqual(Selector.TYPE_ID, s1.type);
+			assert.deepEqual(s1.value, "a");
 
-			var classS = new ClassSelector("b");
-			assert.deepEqual(Selector.TYPE_CLASS, classS.type);
-			assert.deepEqual(classS.value, "b");
+			var s2 = new ClassSelector("b");
+			assert.deepEqual(Selector.TYPE_CLASS, s2.type);
+			assert.deepEqual(s2.value, "b");
 
-			var tagS = new TagSelector("c");
-			assert.deepEqual(Selector.TYPE_TAG, tagS.type);
-			assert.deepEqual(tagS.value, "c");
+			var s3 = new TagSelector("c");
+			assert.deepEqual(Selector.TYPE_TAG, s3.type);
+			assert.deepEqual(s3.value, "c");
 
-			var nthS = new NthSelector("d");
-			assert.deepEqual(Selector.TYPE_NTH, nthS.type);
-			assert.deepEqual(nthS.value, "d");
+			var s4 = new NthSelector("d");
+			assert.deepEqual(Selector.TYPE_NTH, s4.type);
+			assert.deepEqual(s4.value, "d");
 		});
 
 		it("should give correct string when 'toString' method called", function(){
-			var idS = new IdSelector("aa");
-			assert.deepEqual(idS.toString(), "#aa");
+			var s1 = new IdSelector("aa");
+			assert.deepEqual(s1.toString(), "#aa");
 
-			var cs1 = new ClassSelector(["a"]);
-			assert.deepEqual(cs1.toString(), ".a");
-			var cs2 = new ClassSelector(["a", "b"]);
-			assert.deepEqual(cs2.toString(), ".a.b");
+			var s2 = new ClassSelector(["a"]);
+			assert.deepEqual(s2.toString(), ".a");
+			var s3 = new ClassSelector(["a", "b"]);
+			assert.deepEqual(s3.toString(), ".a.b");
 
-			var tagS = new TagSelector("cc");
-			assert.deepEqual(tagS.toString(), "cc");
+			var s4 = new TagSelector("cc");
+			assert.deepEqual(s4.toString(), "cc");
 
-			var nthS = new NthSelector("dd");
-			assert.deepEqual(nthS.toString(), ":nth-child(dd)");
+			var s5 = new NthSelector("dd");
+			assert.deepEqual(s5.toString(), ":nth-child(dd)");
 		});
 	});
 
@@ -128,9 +128,7 @@ describe("Selectors", function(){
 						assert.deepEqual(cp.toString(), "#a.b.cd:nth-child(e)");
 
 						var p1 = new ParentSelector(window.document);
-						p1.add(new TagSelector("f"));
-						p1.add(new ClassSelector(["g"]));
-						p1.add(new NthSelector("h"));
+						p1.add(new TagSelector("f"), new ClassSelector(["g"]), new NthSelector("h"));
 						assert.deepEqual(p1.toString(), "f.g:nth-child(h)");
 
 						cp.add(p1);
@@ -173,8 +171,7 @@ describe("Selectors", function(){
 					if(!err){
 						var cp = new CssPath(window.document);
 
-						cp.add(new TagSelector("a"));
-						cp.add(new IdSelector("b"));
+						cp.add(new TagSelector("a"), new IdSelector("b"));
 						assert.ok(cp.isValid());
 
 						cp.add(new TagSelector("#!"));
@@ -220,12 +217,15 @@ describe("Selectors", function(){
 			it("should add a new value to path", function(){
 				var cp = new CssPath();
 
-				assert.deepEqual(cp.path.length, 0);
+				assert.deepEqual(cp.length(), 0);
 
 				cp.add("a");
-				assert.deepEqual(cp.path.length, 1);
+				assert.deepEqual(cp.length(), 1);
 				cp.add("b");
-				assert.deepEqual(cp.path.length, 2);
+				assert.deepEqual(cp.length(), 2);
+
+				cp.add("c", "d");
+				assert.deepEqual(cp.length(), 4);
 			});
 
 			it("should give a info to path when there is change", function(){
@@ -253,17 +253,16 @@ describe("Selectors", function(){
 			it("should remove the given selector and returns true if its removed", function(){
 				var cp = new CssPath();
 
-				var aS = new IdSelector("a"),
-						bS = new ClassSelector("b");
-				cp.add(aS);
-				cp.add(bS);
+				var s1 = new IdSelector("a"),
+						s2 = new ClassSelector("b");
+				cp.add(s1, s2);
 
-				var isRemoved = cp.remove(bS);
-				assert.deepEqual(cp.path.length, 1);
-				assert.deepEqual(cp.path[0], aS);
+				var isRemoved = cp.remove(s2);
+				assert.deepEqual(cp.length(), 1);
+				assert.deepEqual(cp.at(0), s1);
 				assert.ok(isRemoved);
 
-				var isRemoved = cp.remove(bS);
+				var isRemoved = cp.remove(s2);
 				assert.ok(!isRemoved);
 			});
 
@@ -284,18 +283,16 @@ describe("Selectors", function(){
 			it("should return the count of selectors with matched given type", function(){
 				var cp = new CssPath();
 
-				cp.add(new IdSelector("a"));
-				cp.add(new ClassSelector("b"));
+				cp.add(new IdSelector("a"), new ClassSelector("b"));
 				assert.deepEqual(cp.count(Selector.TYPE_ID), 1);
 
-				cp.add(new IdSelector("c"));
-				cp.add(new IdSelector("d"));
+				cp.add(new IdSelector("c"), new IdSelector("d"));
 				assert.deepEqual(cp.count(Selector.TYPE_ID), 3);
 
-				var idS = new IdSelector("e");
-				cp.add(idS);
+				var s1 = new IdSelector("e");
+				cp.add(s1);
 				assert.deepEqual(cp.count(Selector.TYPE_ID), 4);
-				cp.remove(idS);
+				cp.remove(s1);
 				assert.deepEqual(cp.count(Selector.TYPE_ID), 3);
 			});
 		});
@@ -304,15 +301,14 @@ describe("Selectors", function(){
 			it("should remove one selector from path that matched with given type and returns the removed", function(){
 				var cp = new CssPath();
 
-				var idS = new IdSelector("a"),
-						classS = new ClassSelector("b");
-				cp.add(idS);
-				cp.add(classS);
+				var s1 = new IdSelector("a"),
+						s2 = new ClassSelector("b");
+				cp.add(s1, s2);
 
 				var removed = cp.removeByType(Selector.TYPE_ID);
-				assert.deepEqual(cp.path.length, 1);
-				assert.deepEqual(cp.path[0], classS);
-				assert.deepEqual(removed, idS);
+				assert.deepEqual(cp.length(), 1);
+				assert.deepEqual(cp.at(0), s2);
+				assert.deepEqual(removed, s1);
 			});
 
 			it("should give a info to path when there is change", function(){
@@ -335,29 +331,30 @@ describe("Selectors", function(){
 			it("should remove all selectors from path that matched with given type and returns the removeds", function(){
 				var cp = new CssPath();
 
-				var idS1 = new IdSelector("a"),
-						idS2 = new IdSelector("b"),
-						classS = new ClassSelector("b");
-				cp.add(idS1);
-				cp.add(idS2);
-				cp.add(classS);
+				var s1 = new IdSelector("a"),
+						s2 = new IdSelector("b"),
+						s3 = new ClassSelector("b");
+				cp.add(s1, s2, s3);
 
 				var removed = cp.removeAllByType(Selector.TYPE_ID);
-				assert.deepEqual(cp.path.length, 1);
-				assert.deepEqual(cp.path[0], classS);
-				assert.deepEqual(removed, [idS1, idS2]);
+				assert.deepEqual(cp.length(), 1);
+				assert.deepEqual(cp.at(0), s3);
+				assert.deepEqual(removed, [s1, s2]);
 			});
 
 			it("should give a info to path when there is change", function(){
 				var cp = new CssPath();
 
 				assert.deepEqual(cp.changed, false);
+				
 				var s1 = new IdSelector("a");
+				
 				cp.add(s1);
 				cp.toString();
 				assert.deepEqual(cp.changed, false);
 				cp.removeAllByType(Selector.TYPE_ID);
 				assert.deepEqual(cp.changed, true);
+
 				cp.toString();
 				cp.removeAllByType(Selector.TYPE_ID);
 				assert.deepEqual(cp.changed, false);
@@ -370,12 +367,13 @@ describe("Selectors", function(){
 
 				assert.deepEqual(cp.at(0), null);
 				assert.deepEqual(cp.at(1), null);
-				cp.add("a");
-				cp.add("b");
-				cp.add("c");
+
+				cp.add("a", "b", "c");
+
 				assert.deepEqual(cp.at(0), "a");
 				assert.deepEqual(cp.at(1), "b");
 				assert.deepEqual(cp.at(2), "c");
+
 				assert.deepEqual(cp.at(-1), "c");
 				assert.deepEqual(cp.at(-2), "b");
 				assert.deepEqual(cp.at(-3), "a");
@@ -391,8 +389,7 @@ describe("Selectors", function(){
 				cp.add("a");
 				assert.deepEqual(cp.length(), 1);
 				
-				cp.add("b");
-				cp.add("c");
+				cp.add("b", "c");
 				assert.deepEqual(cp.length(), 3);
 
 				cp.pop();
@@ -409,14 +406,14 @@ describe("Selectors", function(){
 				cp.pop();
 				assert.deepEqual(cp.length(), 0);
 
-				var idS = new IdSelector("b");
-				cp.add(idS);
+				var s1 = new IdSelector("b");
+				cp.add(s1);
 				cp.add(new IdSelector("c"));
 				cp.add(new IdSelector("d"));
 				assert.deepEqual(cp.length(), 3);
 				cp.pop(2);
 				assert.deepEqual(cp.length(), 1);
-				assert.deepEqual(cp.at(0), idS);
+				assert.deepEqual(cp.at(0), s1);
 			});
 
 			it("should give a info to path when there is change", function(){
@@ -442,9 +439,7 @@ describe("Selectors", function(){
 				var s1 = new IdSelector("a"),
 						s2 = new IdSelector("b"),
 						s3 = new IdSelector("c");
-				cp.add(s1);
-				cp.add(s2);
-				cp.add(s3);
+				cp.add(s1, s2, s3);
 
 				assert.deepEqual(cp.at(1), s2);
 				cp.moveToStart(s2);
@@ -464,10 +459,7 @@ describe("Selectors", function(){
 				cp.flush();
 
 				var s4 = new IdSelector("d");
-				cp.add(s1);
-				cp.add(s2);
-				cp.add(s3);
-				cp.add(s4);
+				cp.add(s1, s2, s3, s4);
 
 				assert.deepEqual(cp.at(3), s4);
 				cp.moveToStart(s4);
