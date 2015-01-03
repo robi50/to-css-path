@@ -195,4 +195,16 @@ describe("Selectors", function(){
 			});
 		});
 	});
+
+	describe("ParentSelector", function(){
+		describe("#constructor()", function(){
+			it("should initalize correctly by given parameters", function(){
+				var parentS = new ParentSelector("a", "b");
+
+				assert.deepEqual(parentS.type, Selector.TYPE_PATH);
+				assert.deepEqual(parentS.document, "a");
+				assert.deepEqual(parentS.path, "b");
+			});
+		});
+	});
 });
