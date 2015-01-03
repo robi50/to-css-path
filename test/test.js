@@ -434,6 +434,50 @@ describe("Selectors", function(){
 				assert.deepEqual(cp.changed, false);
 			});
 		});
+
+		describe("#moveToStart", function(){
+			it("should move the given selector to start of current path", function(){
+				var cp = new CssPath();
+
+				var s1 = new IdSelector("a"),
+						s2 = new IdSelector("b"),
+						s3 = new IdSelector("c");
+				cp.add(s1);
+				cp.add(s2);
+				cp.add(s3);
+
+				assert.deepEqual(cp.at(1), s2);
+				cp.moveToStart(s2);
+				assert.deepEqual(cp.at(0), s2);
+				assert.deepEqual(cp.at(1), s1);
+				assert.deepEqual(cp.at(2), s3);
+				assert.deepEqual(cp.length(), 3);
+
+				// lets move one more time
+				assert.deepEqual(cp.at(2), s3);
+				cp.moveToStart(s3);
+				assert.deepEqual(cp.at(0), s3);
+				assert.deepEqual(cp.at(1), s2);
+				assert.deepEqual(cp.at(2), s1);
+				assert.deepEqual(cp.length(), 3);
+
+				cp.flush();
+
+				var s4 = new IdSelector("d");
+				cp.add(s1);
+				cp.add(s2);
+				cp.add(s3);
+				cp.add(s4);
+
+				assert.deepEqual(cp.at(3), s4);
+				cp.moveToStart(s4);
+				assert.deepEqual(cp.at(0), s4);
+				assert.deepEqual(cp.at(1), s1);
+				assert.deepEqual(cp.at(2), s2);
+				assert.deepEqual(cp.at(3), s3);
+				assert.deepEqual(cp.length(), 4);
+			});
+		});
 	});
 
 	describe("ParentSelector", function(){
