@@ -43,3 +43,18 @@ console.log(cssPath);
 $ node example.js
 div#fancy-div
 ```
+or
+
+```html
+<script type="text/javascript" src="to_css_path.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+	  // install it on target element
+	  window.toCssPath.install(window.HTMLElement, window.document);
+	  
+	  // and use it
+	  var body = document.querySelector("body");
+	 	console.log(body.toCssPath());
+	};
+</script>	
+```
