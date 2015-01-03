@@ -473,6 +473,28 @@ describe("Selectors", function(){
 				assert.deepEqual(cp.at(3), s3);
 				assert.deepEqual(cp.length(), 4);
 			});
+
+			it("shouldn't give a info to path when element doestn't move", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				var s1 = new IdSelector("a");
+				cp.add(s1);
+				cp.toString();
+				cp.moveToStart(s1);
+				assert.deepEqual(cp.changed, false);
+			});
+
+			it("should give a info to path when element move", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				var s1 = new IdSelector("a");
+				cp.add("b", s1, "c");
+				cp.toString();
+				cp.moveToStart(s1);
+				assert.deepEqual(cp.changed, true);
+			});
 		});
 	});
 
