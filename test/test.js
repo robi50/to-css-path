@@ -46,7 +46,10 @@ describe("Selectors", function(){
 			var idS = new IdSelector("aa");
 			assert.deepEqual(idS.toString(), "#aa");
 
-			// TODO: ClassSelector
+			var cs1 = new ClassSelector(["a"]);
+			assert.deepEqual(cs1.toString(), ".a");
+			var cs2 = new ClassSelector(["a", "b"]);
+			assert.deepEqual(cs2.toString(), ".a.b");
 
 			var tagS = new TagSelector("cc");
 			assert.deepEqual(tagS.toString(), "cc");
