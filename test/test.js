@@ -94,11 +94,18 @@ describe("Selectors", function(){
 	describe("CssPath", function(){
 		describe("#constructor()", function(){
 			it("should correctly initalized by given parameters", function(){
-				var cp = new CssPath("a", "b");
+				var cp1 = new CssPath("a");
 
-				assert.deepEqual(cp.document, "a");
-				assert.deepEqual(cp.path, "b");
-				assert.deepEqual(cp.type, Selector.TYPE_PATH);
+				assert.deepEqual(cp1.document, "a");
+				assert.deepEqual(cp1.path, []);
+				assert.deepEqual(cp1.type, Selector.TYPE_PATH);
+				assert.deepEqual(cp1.changed, false);
+
+				// now there should be 'changed' in path since there is uncompiled path
+				var cp2 = new CssPath("b", "c");
+				assert.deepEqual(cp2.document, "b");
+				assert.deepEqual(cp2.path, "c");
+				assert.deepEqual(cp2.changed, true);
 			});
 		});
 
@@ -146,6 +153,17 @@ describe("Selectors", function(){
 
 					done();
 				});
+			});
+
+			it("should give path string from cache when there is no change otherwise should compile", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.toString(), "");
+				assert.deepEqual(cp.changed, false);
+				cp.add(new IdSelector("a"));
+				assert.deepEqual(cp.changed, true);
+				cp.toString();
+				assert.deepEqual(cp.changed, false);
 			});
 		});
 
@@ -209,6 +227,14 @@ describe("Selectors", function(){
 				cp.add("b");
 				assert.deepEqual(cp.path.length, 2);
 			});
+
+			it("should give a info to path when there is change", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				cp.add("3");
+				assert.deepEqual(cp.changed, true);
+			});
 		});
 
 		describe("#flush()", function(){
@@ -217,7 +243,9 @@ describe("Selectors", function(){
 
 				cp.add("a");
 				cp.flush();
-				assert.deepEqual(cp.path.length, 0);
+				assert.deepEqual(cp.length(), 0);
+				assert.deepEqual(cp.changed, false);
+				assert.deepEqual(cp.toString(), "");
 			});
 		});
 
@@ -237,6 +265,18 @@ describe("Selectors", function(){
 
 				var isRemoved = cp.remove(bS);
 				assert.ok(!isRemoved);
+			});
+
+			it("should give a info to path when there is change", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				var s1 = new IdSelector("a");
+				cp.add(s1);
+				cp.toString();
+				assert.deepEqual(cp.changed, false);
+				cp.remove(s1);
+				assert.deepEqual(cp.changed, true);
 			});
 		});
 
@@ -274,6 +314,21 @@ describe("Selectors", function(){
 				assert.deepEqual(cp.path[0], classS);
 				assert.deepEqual(removed, idS);
 			});
+
+			it("should give a info to path when there is change", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				var s1 = new IdSelector("a");
+				cp.add(s1);
+				cp.toString();
+				assert.deepEqual(cp.changed, false);
+				cp.removeByType(Selector.TYPE_ID);
+				assert.deepEqual(cp.changed, true);
+				cp.toString();
+				cp.removeByType(Selector.TYPE_ID);
+				assert.deepEqual(cp.changed, false);
+			});
 		});
 
 		describe("#removeAllByType()", function(){
@@ -291,6 +346,21 @@ describe("Selectors", function(){
 				assert.deepEqual(cp.path.length, 1);
 				assert.deepEqual(cp.path[0], classS);
 				assert.deepEqual(removed, [idS1, idS2]);
+			});
+
+			it("should give a info to path when there is change", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				var s1 = new IdSelector("a");
+				cp.add(s1);
+				cp.toString();
+				assert.deepEqual(cp.changed, false);
+				cp.removeAllByType(Selector.TYPE_ID);
+				assert.deepEqual(cp.changed, true);
+				cp.toString();
+				cp.removeAllByType(Selector.TYPE_ID);
+				assert.deepEqual(cp.changed, false);
 			});
 		});
 
@@ -347,6 +417,21 @@ describe("Selectors", function(){
 				cp.pop(2);
 				assert.deepEqual(cp.length(), 1);
 				assert.deepEqual(cp.at(0), idS);
+			});
+
+			it("should give a info to path when there is change", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.changed, false);
+				var s1 = new IdSelector("a");
+				cp.add(s1);
+				cp.toString();
+				assert.deepEqual(cp.changed, false);
+				cp.pop();
+				assert.deepEqual(cp.changed, true);
+				cp.toString();
+				cp.pop();
+				assert.deepEqual(cp.changed, false);
 			});
 		});
 	});
