@@ -121,18 +121,22 @@ describe("Selectors", function(){
 						cp.add(new ClassSelector(["b", "c"]));
 						assert.deepEqual(cp.toString(), "#a.b.c");
 
-						cp.add(new TagSelector("d"));
+						var s1 = new TagSelector("d");
+						cp.add(s1);
 						assert.deepEqual(cp.toString(), "#a.b.cd");
 
 						cp.add(new NthSelector("e"));
 						assert.deepEqual(cp.toString(), "#a.b.cd:nth-child(e)");
+
+						cp.moveToStart(s1);
+						assert.deepEqual(cp.toString(), "d#a.b.c:nth-child(e)");
 
 						var p1 = new ParentSelector(window.document);
 						p1.add(new TagSelector("f"), new ClassSelector(["g"]), new NthSelector("h"));
 						assert.deepEqual(p1.toString(), "f.g:nth-child(h)");
 
 						cp.add(p1);
-						assert.deepEqual(cp.toString(), "f.g:nth-child(h) > #a.b.cd:nth-child(e)");
+						assert.deepEqual(cp.toString(), "f.g:nth-child(h) > d#a.b.c:nth-child(e)");
 
 						var p2 = new ParentSelector(window.document),
 								p3 = new ParentSelector();
@@ -142,7 +146,7 @@ describe("Selectors", function(){
 						assert.deepEqual(p3.toString(), "div > span");
 
 						cp.add(p3);
-						assert.deepEqual(cp.toString(), "div > span > f.g:nth-child(h) > #a.b.cd:nth-child(e)");
+						assert.deepEqual(cp.toString(), "div > span > f.g:nth-child(h) > d#a.b.c:nth-child(e)");
 
 						window.close();
 					}else{
