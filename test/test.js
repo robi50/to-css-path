@@ -149,6 +149,55 @@ describe("Selectors", function(){
 			});
 		});
 
+		describe("#isValid()", function(){
+			it("should return true if current path is a valid css path otherwise false", function(done){
+				jsdom.env("<html><head></head><body></body></html>", [], function(err, window){
+					if(!err){
+						var cp = new CssPath(window.document);
+
+						cp.add(new TagSelector("a"));
+						cp.add(new IdSelector("b"));
+						assert.ok(cp.isValid());
+
+						cp.add(new TagSelector("#!"));
+						assert.ok(!cp.isValid());
+
+						window.close();
+					}else{
+						assert.ok(false, "jsdom env could not be created");
+					}
+
+					done();
+				});
+			});
+		});
+
+		describe("#isUnique", function(){
+			it("should return true if current path is unique in document otherwise false", function(done){
+				jsdom.env("<html><head></head><body></body></html>", [], function(err, window){
+					if(!err){
+						var document = window.document, 
+								cp = new CssPath(window.document);
+
+						cp.add(new TagSelector("span"));
+						assert.ok(!cp.isUnique());
+
+						document.body.appendChild(document.createElement("span"));
+						assert.ok(cp.isUnique());
+						
+						document.body.appendChild(document.createElement("span"));
+						assert.ok(!cp.isUnique());
+
+						window.close();
+					}else{
+						assert.ok(false, "jsdom env could not be created");
+					}
+
+					done();
+				});
+			});
+		});
+
 		describe("#add()", function(){
 			it("should add a new value to path", function(){
 				var cp = new CssPath(null);
