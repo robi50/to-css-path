@@ -15,7 +15,7 @@
 		"jsdom": "^2.0.0"
   },
   "scripts": {
-		"test": "mocha test/test.js"
+		"test": "mocha -b test/"
   },
   "main": "./lib/to_css_path.js",
   "files": [
