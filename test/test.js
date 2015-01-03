@@ -200,7 +200,7 @@ describe("Selectors", function(){
 
 		describe("#add()", function(){
 			it("should add a new value to path", function(){
-				var cp = new CssPath(null);
+				var cp = new CssPath();
 
 				assert.deepEqual(cp.path.length, 0);
 
@@ -213,7 +213,7 @@ describe("Selectors", function(){
 
 		describe("#flush()", function(){
 			it("should remove the all selectors from path and reset the instance", function(){
-				var cp = new CssPath(null);
+				var cp = new CssPath();
 
 				cp.add("a");
 				cp.flush();
@@ -223,7 +223,7 @@ describe("Selectors", function(){
 
 		describe("#remove()", function(){
 			it("should remove the given selector and returns true if its removed", function(){
-				var cp = new CssPath(null);
+				var cp = new CssPath();
 
 				var aS = new IdSelector("a"),
 						bS = new ClassSelector("b");
@@ -242,7 +242,7 @@ describe("Selectors", function(){
 
 		describe("#count()", function(){
 			it("should return the count of selectors with matched given type", function(){
-				var cp = new CssPath(null);
+				var cp = new CssPath();
 
 				cp.add(new IdSelector("a"));
 				cp.add(new ClassSelector("b"));
@@ -262,7 +262,7 @@ describe("Selectors", function(){
 
 		describe("#removeByType()", function(){
 			it("should remove one selector from path that matched with given type and returns the removed", function(){
-				var cp = new CssPath(null);
+				var cp = new CssPath();
 
 				var idS = new IdSelector("a"),
 						classS = new ClassSelector("b");
@@ -291,6 +291,62 @@ describe("Selectors", function(){
 				assert.deepEqual(cp.path.length, 1);
 				assert.deepEqual(cp.path[0], classS);
 				assert.deepEqual(removed, [idS1, idS2]);
+			});
+		});
+
+		describe("#at()", function(){
+			it("should return selector from current path by given indis", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.at(0), null);
+				assert.deepEqual(cp.at(1), null);
+				cp.add("a");
+				cp.add("b");
+				cp.add("c");
+				assert.deepEqual(cp.at(0), "a");
+				assert.deepEqual(cp.at(1), "b");
+				assert.deepEqual(cp.at(2), "c");
+				assert.deepEqual(cp.at(-1), "c");
+				assert.deepEqual(cp.at(-2), "b");
+				assert.deepEqual(cp.at(-3), "a");
+				assert.deepEqual(cp.at(-4), null);
+			});
+		});
+
+		describe("#length()", function(){
+			it("should return selector count of current path", function(){
+				var cp = new CssPath();
+
+				assert.deepEqual(cp.length(), 0);
+				cp.add("a");
+				assert.deepEqual(cp.length(), 1);
+				
+				cp.add("b");
+				cp.add("c");
+				assert.deepEqual(cp.length(), 3);
+
+				cp.pop();
+				assert.deepEqual(cp.length(), 2);
+			});
+		});
+
+		describe("#pop()", function(){
+			it("should remove last selector/selectors from current path according to given count", function(){
+				var cp = new CssPath();
+
+				cp.add(new IdSelector("a"));
+				assert.deepEqual(cp.length(), 1);
+				cp.pop();
+				assert.deepEqual(cp.length(), 0);
+
+				var idS = new IdSelector("b");
+				cp.add(idS);
+				cp.add(new IdSelector("c"));
+				cp.add(new IdSelector("d"));
+				assert.deepEqual(cp.length(), 3);
+				cp.pop(2);
+				assert.deepEqual(cp.length(), 1);
+				assert.deepEqual(cp.at(0), idS);
 			});
 		});
 	});
