@@ -1,5 +1,5 @@
 #!/usr/bin/env mocha
-var jsdom = require("jsdom").jsdom;
+var jsdom = require("jsdom");
 var fs = require("fs");
 var assert = require("assert");
 
@@ -96,6 +96,53 @@ describe("Selectors", function(){
 				assert.deepEqual(cp.document, "a");
 				assert.deepEqual(cp.path, "b");
 				assert.deepEqual(cp.type, Selector.TYPE_PATH);
+			});
+		});
+
+		describe("#toString()", function(){
+			it("should give correct output according to current path", function(done){
+				jsdom.env("<html><head></head><body></body></html>", [], function(err, window){
+					if(!err){
+						var cp = new CssPath(window.document);
+
+						cp.add(new IdSelector("a"));
+						assert.deepEqual(cp.toString(), "#a");
+
+						cp.add(new ClassSelector(["b", "c"]));
+						assert.deepEqual(cp.toString(), "#a.b.c");
+
+						cp.add(new TagSelector("d"));
+						assert.deepEqual(cp.toString(), "#a.b.cd");
+
+						cp.add(new NthSelector("e"));
+						assert.deepEqual(cp.toString(), "#a.b.cd:nth-child(e)");
+
+						var p1 = new ParentSelector(window.document);
+						p1.add(new TagSelector("f"));
+						p1.add(new ClassSelector(["g"]));
+						p1.add(new NthSelector("h"));
+						assert.deepEqual(p1.toString(), "f.g:nth-child(h)");
+
+						cp.add(p1);
+						assert.deepEqual(cp.toString(), "f.g:nth-child(h) > #a.b.cd:nth-child(e)");
+
+						var p2 = new ParentSelector(window.document),
+								p3 = new ParentSelector();
+						p2.add(new TagSelector("div"));
+						p3.add(new TagSelector("span"));
+						p3.add(p2);
+						assert.deepEqual(p3.toString(), "div > span");
+
+						cp.add(p3);
+						assert.deepEqual(cp.toString(), "div > span > f.g:nth-child(h) > #a.b.cd:nth-child(e)");
+
+						window.close();
+					}else{
+						assert.ok(false, "jsdom env could not be created");
+					}
+
+					done();
+				});
 			});
 		});
 
